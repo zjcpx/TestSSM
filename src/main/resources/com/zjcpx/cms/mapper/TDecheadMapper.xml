@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zjcpx.cms.mapper.TDecheadMapper" >
+  <resultMap id="BaseResultMap" type="com.zjcpx.cms.pojo.TDechead" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="custommaster" property="custommaster" jdbcType="VARCHAR" />
+    <result column="customsdeclarationno" property="customsdeclarationno" jdbcType="VARCHAR" />
+    <result column="preentryid" property="preentryid" jdbcType="VARCHAR" />
+    <result column="ddate" property="ddate" jdbcType="VARCHAR" />
+    <result column="ieflag" property="ieflag" jdbcType="VARCHAR" />
+    <result column="ieport" property="ieport" jdbcType="VARCHAR" />
+    <result column="iedate" property="iedate" jdbcType="VARCHAR" />
+    <result column="manualno" property="manualno" jdbcType="VARCHAR" />
+    <result column="contrno" property="contrno" jdbcType="VARCHAR" />
+    <result column="tradecoscc" property="tradecoscc" jdbcType="VARCHAR" />
+    <result column="tradeco" property="tradeco" jdbcType="VARCHAR" />
+    <result column="tradeciqcode" property="tradeciqcode" jdbcType="VARCHAR" />
+    <result column="tradename" property="tradename" jdbcType="VARCHAR" />
+    <result column="overseasconsigneecode" property="overseasconsigneecode" jdbcType="VARCHAR" />
+    <result column="overseasconsignorename" property="overseasconsignorename" jdbcType="VARCHAR" />
+    <result column="ownercodescc" property="ownercodescc" jdbcType="VARCHAR" />
+    <result column="ownercode" property="ownercode" jdbcType="VARCHAR" />
+    <result column="ownerciqcode" property="ownerciqcode" jdbcType="VARCHAR" />
+    <result column="ownername" property="ownername" jdbcType="VARCHAR" />
+    <result column="agentcodescc" property="agentcodescc" jdbcType="VARCHAR" />
+    <result column="agentcode" property="agentcode" jdbcType="VARCHAR" />
+    <result column="declciqcode" property="declciqcode" jdbcType="VARCHAR" />
+    <result column="agentname" property="agentname" jdbcType="VARCHAR" />
+    <result column="trafmode" property="trafmode" jdbcType="VARCHAR" />
+    <result column="shipnameen" property="shipnameen" jdbcType="VARCHAR" />
+    <result column="voyageno" property="voyageno" jdbcType="VARCHAR" />
+    <result column="billno" property="billno" jdbcType="VARCHAR" />
+    <result column="trademode" property="trademode" jdbcType="VARCHAR" />
+    <result column="cutmode" property="cutmode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, custommaster, customsdeclarationno, preentryid, ddate, ieflag, ieport, iedate, 
+    manualno, contrno, tradecoscc, tradeco, tradeciqcode, tradename, overseasconsigneecode, 
+    overseasconsignorename, ownercodescc, ownercode, ownerciqcode, ownername, agentcodescc, 
+    agentcode, declciqcode, agentname, trafmode, shipnameen, voyageno, billno, trademode, 
+    cutmode
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zjcpx.cms.pojo.TDecheadExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_dechead
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_dechead
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_dechead
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zjcpx.cms.pojo.TDecheadExample" >
+    delete from t_dechead
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zjcpx.cms.pojo.TDechead" >
+    insert into t_dechead (id, custommaster, customsdeclarationno, 
+      preentryid, ddate, ieflag, 
+      ieport, iedate, manualno, 
+      contrno, tradecoscc, tradeco, 
+      tradeciqcode, tradename, overseasconsigneecode, 
+      overseasconsignorename, ownercodescc, ownercode, 
+      ownerciqcode, ownername, agentcodescc, 
+      agentcode, declciqcode, agentname, 
+      trafmode, shipnameen, voyageno, 
+      billno, trademode, cutmode
+      )
+    values (#{id,jdbcType=INTEGER}, #{custommaster,jdbcType=VARCHAR}, #{customsdeclarationno,jdbcType=VARCHAR}, 
+      #{preentryid,jdbcType=VARCHAR}, #{ddate,jdbcType=VARCHAR}, #{ieflag,jdbcType=VARCHAR}, 
+      #{ieport,jdbcType=VARCHAR}, #{iedate,jdbcType=VARCHAR}, #{manualno,jdbcType=VARCHAR}, 
+      #{contrno,jdbcType=VARCHAR}, #{tradecoscc,jdbcType=VARCHAR}, #{tradeco,jdbcType=VARCHAR}, 
+      #{tradeciqcode,jdbcType=VARCHAR}, #{tradename,jdbcType=VARCHAR}, #{overseasconsigneecode,jdbcType=VARCHAR}, 
+      #{overseasconsignorename,jdbcType=VARCHAR}, #{ownercodescc,jdbcType=VARCHAR}, #{ownercode,jdbcType=VARCHAR}, 
+      #{ownerciqcode,jdbcType=VARCHAR}, #{ownername,jdbcType=VARCHAR}, #{agentcodescc,jdbcType=VARCHAR}, 
+      #{agentcode,jdbcType=VARCHAR}, #{declciqcode,jdbcType=VARCHAR}, #{agentname,jdbcType=VARCHAR}, 
+      #{trafmode,jdbcType=VARCHAR}, #{shipnameen,jdbcType=VARCHAR}, #{voyageno,jdbcType=VARCHAR}, 
+      #{billno,jdbcType=VARCHAR}, #{trademode,jdbcType=VARCHAR}, #{cutmode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zjcpx.cms.pojo.TDechead" >
+    insert into t_dechead
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="custommaster != null" >
+        custommaster,
+      </if>
+      <if test="customsdeclarationno != null" >
+        customsdeclarationno,
+      </if>
+      <if test="preentryid != null" >
+        preentryid,
+      </if>
+      <if test="ddate != null" >
+        ddate,
+      </if>
+      <if test="ieflag != null" >
+        ieflag,
+      </if>
+      <if test="ieport != null" >
+        ieport,
+      </if>
+      <if test="iedate != null" >
+        iedate,
+      </if>
+      <if test="manualno != null" >
+        manualno,
+      </if>
+      <if test="contrno != null" >
+        contrno,
+      </if>
+      <if test="tradecoscc != null" >
+        tradecoscc,
+      </if>
+      <if test="tradeco != null" >
+        tradeco,
+      </if>
+      <if test="tradeciqcode != null" >
+        tradeciqcode,
+      </if>
+      <if test="tradename != null" >
+        tradename,
+      </if>
+      <if test="overseasconsigneecode != null" >
+        overseasconsigneecode,
+      </if>
+      <if test="overseasconsignorename != null" >
+        overseasconsignorename,
+      </if>
+      <if test="ownercodescc != null" >
+        ownercodescc,
+      </if>
+      <if test="ownercode != null" >
+        ownercode,
+      </if>
+      <if test="ownerciqcode != null" >
+        ownerciqcode,
+      </if>
+      <if test="ownername != null" >
+        ownername,
+      </if>
+      <if test="agentcodescc != null" >
+        agentcodescc,
+      </if>
+      <if test="agentcode != null" >
+        agentcode,
+      </if>
+      <if test="declciqcode != null" >
+        declciqcode,
+      </if>
+      <if test="agentname != null" >
+        agentname,
+      </if>
+      <if test="trafmode != null" >
+        trafmode,
+      </if>
+      <if test="shipnameen != null" >
+        shipnameen,
+      </if>
+      <if test="voyageno != null" >
+        voyageno,
+      </if>
+      <if test="billno != null" >
+        billno,
+      </if>
+      <if test="trademode != null" >
+        trademode,
+      </if>
+      <if test="cutmode != null" >
+        cutmode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="custommaster != null" >
+        #{custommaster,jdbcType=VARCHAR},
+      </if>
+      <if test="customsdeclarationno != null" >
+        #{customsdeclarationno,jdbcType=VARCHAR},
+      </if>
+      <if test="preentryid != null" >
+        #{preentryid,jdbcType=VARCHAR},
+      </if>
+      <if test="ddate != null" >
+        #{ddate,jdbcType=VARCHAR},
+      </if>
+      <if test="ieflag != null" >
+        #{ieflag,jdbcType=VARCHAR},
+      </if>
+      <if test="ieport != null" >
+        #{ieport,jdbcType=VARCHAR},
+      </if>
+      <if test="iedate != null" >
+        #{iedate,jdbcType=VARCHAR},
+      </if>
+      <if test="manualno != null" >
+        #{manualno,jdbcType=VARCHAR},
+      </if>
+      <if test="contrno != null" >
+        #{contrno,jdbcType=VARCHAR},
+      </if>
+      <if test="tradecoscc != null" >
+        #{tradecoscc,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeco != null" >
+        #{tradeco,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeciqcode != null" >
+        #{tradeciqcode,jdbcType=VARCHAR},
+      </if>
+      <if test="tradename != null" >
+        #{tradename,jdbcType=VARCHAR},
+      </if>
+      <if test="overseasconsigneecode != null" >
+        #{overseasconsigneecode,jdbcType=VARCHAR},
+      </if>
+      <if test="overseasconsignorename != null" >
+        #{overseasconsignorename,jdbcType=VARCHAR},
+      </if>
+      <if test="ownercodescc != null" >
+        #{ownercodescc,jdbcType=VARCHAR},
+      </if>
+      <if test="ownercode != null" >
+        #{ownercode,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerciqcode != null" >
+        #{ownerciqcode,jdbcType=VARCHAR},
+      </if>
+      <if test="ownername != null" >
+        #{ownername,jdbcType=VARCHAR},
+      </if>
+      <if test="agentcodescc != null" >
+        #{agentcodescc,jdbcType=VARCHAR},
+      </if>
+      <if test="agentcode != null" >
+        #{agentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="declciqcode != null" >
+        #{declciqcode,jdbcType=VARCHAR},
+      </if>
+      <if test="agentname != null" >
+        #{agentname,jdbcType=VARCHAR},
+      </if>
+      <if test="trafmode != null" >
+        #{trafmode,jdbcType=VARCHAR},
+      </if>
+      <if test="shipnameen != null" >
+        #{shipnameen,jdbcType=VARCHAR},
+      </if>
+      <if test="voyageno != null" >
+        #{voyageno,jdbcType=VARCHAR},
+      </if>
+      <if test="billno != null" >
+        #{billno,jdbcType=VARCHAR},
+      </if>
+      <if test="trademode != null" >
+        #{trademode,jdbcType=VARCHAR},
+      </if>
+      <if test="cutmode != null" >
+        #{cutmode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zjcpx.cms.pojo.TDecheadExample" resultType="java.lang.Integer" >
+    select count(*) from t_dechead
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_dechead
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.custommaster != null" >
+        custommaster = #{record.custommaster,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customsdeclarationno != null" >
+        customsdeclarationno = #{record.customsdeclarationno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.preentryid != null" >
+        preentryid = #{record.preentryid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ddate != null" >
+        ddate = #{record.ddate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ieflag != null" >
+        ieflag = #{record.ieflag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ieport != null" >
+        ieport = #{record.ieport,jdbcType=VARCHAR},
+      </if>
+      <if test="record.iedate != null" >
+        iedate = #{record.iedate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.manualno != null" >
+        manualno = #{record.manualno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contrno != null" >
+        contrno = #{record.contrno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tradecoscc != null" >
+        tradecoscc = #{record.tradecoscc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tradeco != null" >
+        tradeco = #{record.tradeco,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tradeciqcode != null" >
+        tradeciqcode = #{record.tradeciqcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tradename != null" >
+        tradename = #{record.tradename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.overseasconsigneecode != null" >
+        overseasconsigneecode = #{record.overseasconsigneecode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.overseasconsignorename != null" >
+        overseasconsignorename = #{record.overseasconsignorename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ownercodescc != null" >
+        ownercodescc = #{record.ownercodescc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ownercode != null" >
+        ownercode = #{record.ownercode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ownerciqcode != null" >
+        ownerciqcode = #{record.ownerciqcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ownername != null" >
+        ownername = #{record.ownername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.agentcodescc != null" >
+        agentcodescc = #{record.agentcodescc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.agentcode != null" >
+        agentcode = #{record.agentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.declciqcode != null" >
+        declciqcode = #{record.declciqcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.agentname != null" >
+        agentname = #{record.agentname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trafmode != null" >
+        trafmode = #{record.trafmode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shipnameen != null" >
+        shipnameen = #{record.shipnameen,jdbcType=VARCHAR},
+      </if>
+      <if test="record.voyageno != null" >
+        voyageno = #{record.voyageno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.billno != null" >
+        billno = #{record.billno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trademode != null" >
+        trademode = #{record.trademode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cutmode != null" >
+        cutmode = #{record.cutmode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_dechead
+    set id = #{record.id,jdbcType=INTEGER},
+      custommaster = #{record.custommaster,jdbcType=VARCHAR},
+      customsdeclarationno = #{record.customsdeclarationno,jdbcType=VARCHAR},
+      preentryid = #{record.preentryid,jdbcType=VARCHAR},
+      ddate = #{record.ddate,jdbcType=VARCHAR},
+      ieflag = #{record.ieflag,jdbcType=VARCHAR},
+      ieport = #{record.ieport,jdbcType=VARCHAR},
+      iedate = #{record.iedate,jdbcType=VARCHAR},
+      manualno = #{record.manualno,jdbcType=VARCHAR},
+      contrno = #{record.contrno,jdbcType=VARCHAR},
+      tradecoscc = #{record.tradecoscc,jdbcType=VARCHAR},
+      tradeco = #{record.tradeco,jdbcType=VARCHAR},
+      tradeciqcode = #{record.tradeciqcode,jdbcType=VARCHAR},
+      tradename = #{record.tradename,jdbcType=VARCHAR},
+      overseasconsigneecode = #{record.overseasconsigneecode,jdbcType=VARCHAR},
+      overseasconsignorename = #{record.overseasconsignorename,jdbcType=VARCHAR},
+      ownercodescc = #{record.ownercodescc,jdbcType=VARCHAR},
+      ownercode = #{record.ownercode,jdbcType=VARCHAR},
+      ownerciqcode = #{record.ownerciqcode,jdbcType=VARCHAR},
+      ownername = #{record.ownername,jdbcType=VARCHAR},
+      agentcodescc = #{record.agentcodescc,jdbcType=VARCHAR},
+      agentcode = #{record.agentcode,jdbcType=VARCHAR},
+      declciqcode = #{record.declciqcode,jdbcType=VARCHAR},
+      agentname = #{record.agentname,jdbcType=VARCHAR},
+      trafmode = #{record.trafmode,jdbcType=VARCHAR},
+      shipnameen = #{record.shipnameen,jdbcType=VARCHAR},
+      voyageno = #{record.voyageno,jdbcType=VARCHAR},
+      billno = #{record.billno,jdbcType=VARCHAR},
+      trademode = #{record.trademode,jdbcType=VARCHAR},
+      cutmode = #{record.cutmode,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zjcpx.cms.pojo.TDechead" >
+    update t_dechead
+    <set >
+      <if test="custommaster != null" >
+        custommaster = #{custommaster,jdbcType=VARCHAR},
+      </if>
+      <if test="customsdeclarationno != null" >
+        customsdeclarationno = #{customsdeclarationno,jdbcType=VARCHAR},
+      </if>
+      <if test="preentryid != null" >
+        preentryid = #{preentryid,jdbcType=VARCHAR},
+      </if>
+      <if test="ddate != null" >
+        ddate = #{ddate,jdbcType=VARCHAR},
+      </if>
+      <if test="ieflag != null" >
+        ieflag = #{ieflag,jdbcType=VARCHAR},
+      </if>
+      <if test="ieport != null" >
+        ieport = #{ieport,jdbcType=VARCHAR},
+      </if>
+      <if test="iedate != null" >
+        iedate = #{iedate,jdbcType=VARCHAR},
+      </if>
+      <if test="manualno != null" >
+        manualno = #{manualno,jdbcType=VARCHAR},
+      </if>
+      <if test="contrno != null" >
+        contrno = #{contrno,jdbcType=VARCHAR},
+      </if>
+      <if test="tradecoscc != null" >
+        tradecoscc = #{tradecoscc,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeco != null" >
+        tradeco = #{tradeco,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeciqcode != null" >
+        tradeciqcode = #{tradeciqcode,jdbcType=VARCHAR},
+      </if>
+      <if test="tradename != null" >
+        tradename = #{tradename,jdbcType=VARCHAR},
+      </if>
+      <if test="overseasconsigneecode != null" >
+        overseasconsigneecode = #{overseasconsigneecode,jdbcType=VARCHAR},
+      </if>
+      <if test="overseasconsignorename != null" >
+        overseasconsignorename = #{overseasconsignorename,jdbcType=VARCHAR},
+      </if>
+      <if test="ownercodescc != null" >
+        ownercodescc = #{ownercodescc,jdbcType=VARCHAR},
+      </if>
+      <if test="ownercode != null" >
+        ownercode = #{ownercode,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerciqcode != null" >
+        ownerciqcode = #{ownerciqcode,jdbcType=VARCHAR},
+      </if>
+      <if test="ownername != null" >
+        ownername = #{ownername,jdbcType=VARCHAR},
+      </if>
+      <if test="agentcodescc != null" >
+        agentcodescc = #{agentcodescc,jdbcType=VARCHAR},
+      </if>
+      <if test="agentcode != null" >
+        agentcode = #{agentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="declciqcode != null" >
+        declciqcode = #{declciqcode,jdbcType=VARCHAR},
+      </if>
+      <if test="agentname != null" >
+        agentname = #{agentname,jdbcType=VARCHAR},
+      </if>
+      <if test="trafmode != null" >
+        trafmode = #{trafmode,jdbcType=VARCHAR},
+      </if>
+      <if test="shipnameen != null" >
+        shipnameen = #{shipnameen,jdbcType=VARCHAR},
+      </if>
+      <if test="voyageno != null" >
+        voyageno = #{voyageno,jdbcType=VARCHAR},
+      </if>
+      <if test="billno != null" >
+        billno = #{billno,jdbcType=VARCHAR},
+      </if>
+      <if test="trademode != null" >
+        trademode = #{trademode,jdbcType=VARCHAR},
+      </if>
+      <if test="cutmode != null" >
+        cutmode = #{cutmode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zjcpx.cms.pojo.TDechead" >
+    update t_dechead
+    set custommaster = #{custommaster,jdbcType=VARCHAR},
+      customsdeclarationno = #{customsdeclarationno,jdbcType=VARCHAR},
+      preentryid = #{preentryid,jdbcType=VARCHAR},
+      ddate = #{ddate,jdbcType=VARCHAR},
+      ieflag = #{ieflag,jdbcType=VARCHAR},
+      ieport = #{ieport,jdbcType=VARCHAR},
+      iedate = #{iedate,jdbcType=VARCHAR},
+      manualno = #{manualno,jdbcType=VARCHAR},
+      contrno = #{contrno,jdbcType=VARCHAR},
+      tradecoscc = #{tradecoscc,jdbcType=VARCHAR},
+      tradeco = #{tradeco,jdbcType=VARCHAR},
+      tradeciqcode = #{tradeciqcode,jdbcType=VARCHAR},
+      tradename = #{tradename,jdbcType=VARCHAR},
+      overseasconsigneecode = #{overseasconsigneecode,jdbcType=VARCHAR},
+      overseasconsignorename = #{overseasconsignorename,jdbcType=VARCHAR},
+      ownercodescc = #{ownercodescc,jdbcType=VARCHAR},
+      ownercode = #{ownercode,jdbcType=VARCHAR},
+      ownerciqcode = #{ownerciqcode,jdbcType=VARCHAR},
+      ownername = #{ownername,jdbcType=VARCHAR},
+      agentcodescc = #{agentcodescc,jdbcType=VARCHAR},
+      agentcode = #{agentcode,jdbcType=VARCHAR},
+      declciqcode = #{declciqcode,jdbcType=VARCHAR},
+      agentname = #{agentname,jdbcType=VARCHAR},
+      trafmode = #{trafmode,jdbcType=VARCHAR},
+      shipnameen = #{shipnameen,jdbcType=VARCHAR},
+      voyageno = #{voyageno,jdbcType=VARCHAR},
+      billno = #{billno,jdbcType=VARCHAR},
+      trademode = #{trademode,jdbcType=VARCHAR},
+      cutmode = #{cutmode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

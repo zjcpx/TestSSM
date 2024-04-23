@@ -1,0 +1,101 @@
+.table td, .table th{
+	padding: 0;
+	background-color: #eeeeee;
+	font-weight: 800;
+}
+
+.table td input{
+	background-color: #ffffff;
+}
+
+.padding0 {s
+	padding: 0px !important;
+}
+
+*{
+	font-size: 14px;
+}
+.inputText {
+	padding-left: 3px;
+	width: calc(100% - 0px);
+	height: 100%;
+	background-color: #efefef;
+	border: none;
+	outline: none;
+	/* background: #fff; */
+	box-sizing: border-box;
+}
+
+.tableTrisection .tablebtextfield {
+	padding-top: 5px;
+	padding-right: 5px;
+	text-align: right;
+	white-space: nowrap;
+	width: 7%;
+	min-width: 60px;
+}
+.a_ToPage {
+	text-decoration: underline;
+	color: #00f;
+}
+
+.tableTrisection {
+	width: 100%;
+	margin: 0px auto 15px;
+	table-layout: fixed;
+}
+
+.btnInput {
+	min-width: 60px;
+	height: 40px;
+	background-color: #fb9e4b;
+	border: 1px solid #e18634;
+	color: #FFFFFF;
+	font-size: 14px;
+	padding: 0px 10px;
+	font-weight: bold;
+	border-radius: 3px;
+}
+
+.btn{
+	font-size: 12px;
+	margin-right: 3px;
+}
+.Table_List th{
+	font-size: 12px;
+}
+
+.Table_List td{
+	font-size: 12px;
+}
+
+
+
+.gfsb_left{
+	text-align: right;
+	width: 45%;
+}
+
+.gfsb_right{
+	text-align: left;
+	width: 55%;
+}
+
+#tb_gfsb{
+	width: 50%;
+	margin: auto auto;
+	border: 1px solid gray;
+	background-color: red;
+	z-index: 1000;
+
+}
+#mask{
+	position:fixed;
+    top     : 0;
+    left    : 0;
+    bottom  : 0;
+    right   : 0;
+    background:#000;
+    opacity: 0.2;
+    z-index: 200;
+}

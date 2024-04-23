@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjcpx.cms.mapper.TQainfoMapper">
+  <resultMap id="BaseResultMap" type="com.zjcpx.cms.pojo.TQainfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="fieldname" jdbcType="VARCHAR" property="fieldname" />
+    <result column="qacontent" jdbcType="VARCHAR" property="qacontent" />
+    <result column="fieldcname" jdbcType="VARCHAR" property="fieldcname" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, fieldname, qacontent, fieldcname
+  </sql>
+  <select id="selectByExample" parameterType="com.zjcpx.cms.pojo.TQainfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_qainfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_qainfo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_qainfo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zjcpx.cms.pojo.TQainfoExample">
+    delete from t_qainfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.zjcpx.cms.pojo.TQainfo" useGeneratedKeys="true">
+    insert into t_qainfo (fieldname, qacontent, fieldcname
+      )
+    values (#{fieldname,jdbcType=VARCHAR}, #{qacontent,jdbcType=VARCHAR}, #{fieldcname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.zjcpx.cms.pojo.TQainfo" useGeneratedKeys="true">
+    insert into t_qainfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fieldname != null">
+        fieldname,
+      </if>
+      <if test="qacontent != null">
+        qacontent,
+      </if>
+      <if test="fieldcname != null">
+        fieldcname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fieldname != null">
+        #{fieldname,jdbcType=VARCHAR},
+      </if>
+      <if test="qacontent != null">
+        #{qacontent,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldcname != null">
+        #{fieldcname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zjcpx.cms.pojo.TQainfoExample" resultType="java.lang.Long">
+    select count(*) from t_qainfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_qainfo
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.fieldname != null">
+        fieldname = #{record.fieldname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qacontent != null">
+        qacontent = #{record.qacontent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fieldcname != null">
+        fieldcname = #{record.fieldcname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_qainfo
+    set id = #{record.id,jdbcType=INTEGER},
+      fieldname = #{record.fieldname,jdbcType=VARCHAR},
+      qacontent = #{record.qacontent,jdbcType=VARCHAR},
+      fieldcname = #{record.fieldcname,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zjcpx.cms.pojo.TQainfo">
+    update t_qainfo
+    <set>
+      <if test="fieldname != null">
+        fieldname = #{fieldname,jdbcType=VARCHAR},
+      </if>
+      <if test="qacontent != null">
+        qacontent = #{qacontent,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldcname != null">
+        fieldcname = #{fieldcname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zjcpx.cms.pojo.TQainfo">
+    update t_qainfo
+    set fieldname = #{fieldname,jdbcType=VARCHAR},
+      qacontent = #{qacontent,jdbcType=VARCHAR},
+      fieldcname = #{fieldcname,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
